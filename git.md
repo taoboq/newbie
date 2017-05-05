@@ -99,12 +99,18 @@ $ ssh-keygen -t rsa -C "youremail@example.com"
 ### github 现在github上创建新的repository
 
 $ git remote add origin git@github.com:michaelliao/learngit.git
-> 远程库的名字就是origin，这是Git默认的叫法。michaelliao/learngit.git你自己的git账号下的repository
+
+> 远程仓库的默认名称是origin。michaelliao/learngit.git你自己的git账号下的repository
     
 $ git push -u origin master
 > 当前分支master推送到远程。由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
 
 $ git push origin master
+
+$ git remote
+> 查看远程库的信息
+
+$ git remote -v
 
 ### git clone
 $ git clone git@github.com:michaelliao/gitskills.git
@@ -134,3 +140,74 @@ $ git branch -d <name>
 $ git merge <branch name>
 > 在同时被修改的文档中显示了相冲突的部分，需要手动选择一个合适的修改。然后在$ git add readme.txt $ git commit -m "conflict fixed"
 
+$ git log --graph --pretty=oneline --abbrev-commit
+> 图像显示合并冲突的过程
+
+$ git log --graph
+
+$ git merge --no-ff -m "merge with no-ff" dev
+> --no-ff表示禁用Fast forward.
+
+在实际开发中，我们应该按照几个基本原则进行分支管理：
+
+首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；
+
+那在哪干活呢？干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；
+
+你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。
+
+### bug分支
+$ git stash
+> 修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场
+
+$ git stash pop
+> 恢复的同时将stash删除
+
+$ git stash apply 
+> 恢复，stash内容不删除
+
+$ git stash drop
+> 删除stash内容
+
+$ git stash list
+
+### feature 分支
+开发一个新feature，最好新建一个分支；
+
+$ git branch -D <name>
+> 强行删除未合并的分支
+
+### 协作
+1. master分支是主分支，因此要时刻与远程同步；
+
+2. dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；
+
+3. bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；
+
+4. feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。
+
+$ git push origin <branch-name>
+> 推送分支到远程
+
+当多人同时向远程提交时，产生冲突。解决办法：先用git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送。
+
+$ git pull
+
+$ git checkout -b branch-name origin/branch-name
+> 在本地创建和远程分支对应的分支，使用本地和远程分支的名称最好一致；
+
+$ git branch --set-upstream branch-name origin/branch-name
+> 建立本地分支和远程分支的关联
+
+从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+
+## tag标签
+$ git tag <tag-name：v1.0>
+
+命令git tag <name>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+
+git tag -a <tagname> -m "blablabla..."可以指定标签信息；
+
+git tag -s <tagname> -m "blablabla..."可以用PGP签名标签；
+
+命令git tag可以查看所有标签。
