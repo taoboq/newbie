@@ -3,9 +3,10 @@ Git跟踪并管理的是修改，而非文件
 
 ## local
 $ git config --global user.name "Your Name"
+
 $ git config --global user.email "email@example.com"
 
-    注意git config命令的--global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。
+    > 注意git config命令的--global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。
 
 $ mkdir learngit
 	新建文件夹learngit,windows系统下最好各级目录不含中文
@@ -77,7 +78,9 @@ $ ssh-keygen -t rsa -C "youremail@example.com"
     
 ### github 现在github上创建新的repository
 $ git remote add origin git@github.com:michaelliao/learngit.git
+    
     远程库的名字就是origin，这是Git默认的叫法。michaelliao/learngit.git你自己的git账号下的repository
+    
 $ git push -u origin master
     当前分支master推送到远程。由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
 $ git push origin master
