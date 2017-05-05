@@ -46,6 +46,7 @@ $ git log
     查看最近到最远的提交日志
 $ git log --pretty=oneline
     一行显示每次提交的日志
+退出用q
 
 $ git reset --hard commit_id
 $ git reset --hard HEAD^
@@ -84,3 +85,4 @@ $ git push origin master
 $ git clone git@github.com:michaelliao/gitskills.git
     git clone克隆一个本地库。GitHub给出的地址不止一个，还可以用https://github.com/michaelliao/gitskills.git这样的地址。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议
 
+--分支
