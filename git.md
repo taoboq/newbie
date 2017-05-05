@@ -130,5 +130,7 @@ $ git merge <name>
 $ git branch -d <name>
 > 合并完成后可以删除被合并分支
 
-## conflict
-$ git branch & merge
+## conflict 当前分支和要合并的分支同时做出了修改
+$ git merge <branch name>
+> 在同时被修改的文档中显示了相冲突的部分，需要手动选择一个合适的修改。然后在$ git add readme.txt $ git commit -m "conflict fixed"
+
