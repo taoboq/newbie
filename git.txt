@@ -37,3 +37,5 @@ $ git commit -m "add 3 files."
 $ git status
     查看仓库当前的状态
     q退出显示的当前状态
+$ git diff
+    查看修改的前后对比
