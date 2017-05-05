@@ -56,3 +56,13 @@ $ git checkout -- readme.txt
     把readme.txt文件在工作区的修改全部撤销，
 $ git reset HEAD readme.txt
     若已经采用git add 加入到暂存区，则要使用git reset HEAD   file， 将文件从暂存区中撤回，然后使用git checkout -- file 来删除工作区的修改。
+    
+$ rm test.txt
+    删除文件，
+
+$ git rm test.txt     
+$ git commit -m "remove test.txt"
+    确实要从版本库中删除该文件，那就用命令git rm删掉，并且git commit
+    
+$ git checkout -- test.txt
+    如果删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版
