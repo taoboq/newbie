@@ -129,3 +129,5 @@ $ git merge <name>
 
 $ git branch -d <name>
 > 合并完成后可以删除被合并分支
+
+### conflict
