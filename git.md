@@ -111,3 +111,21 @@ $ git clone git@github.com:michaelliao/gitskills.git
 > git clone克隆一个本地库。GitHub给出的地址不止一个，还可以用https://github.com/michaelliao/gitskills.git这样的地址。实际上，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议
 
 ## 分支
+$ git branch
+> 查看所有分支，当前分支前加*，即为当前工作目录
+
+$ git branch <name>
+> 创建分支<name>
+
+$ git checkout <name>
+> 切换到分支<name>,该分支为当前工作目录。
+> $ git checkout master,切换回master分支
+
+$ git checkout -b <name>
+> 等于以上两条命令
+
+$ git merge <name>
+> 合并指定分支<name>到当前分支
+
+$ git branch -d <name>
+> 合并完成后可以删除被合并分支
