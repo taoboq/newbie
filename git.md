@@ -122,7 +122,7 @@ $ git checkout <name>
 > $ git checkout master,切换回master分支
 
 $ git checkout -b <name>
-> 等于以上两条命令
+> 等于以上两条命令, branch and checkout
 
 $ git merge <name>
 > 合并指定分支<name>到当前分支
