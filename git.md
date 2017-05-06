@@ -202,12 +202,40 @@ $ git branch --set-upstream branch-name origin/branch-name
 从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
 
 ## tag标签
-$ git tag <tag-name：v1.0>
 
-命令git tag <name>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+$ git tag <tag：v1.0>
+> 新建一个标签，默认为HEAD，也可以指定一个commit id；
 
-git tag -a <tagname> -m "blablabla..."可以指定标签信息；
+$ git tag v0.9 6224937
+> 对commit id为6224937的commit，打上标签v0.9
 
-git tag -s <tagname> -m "blablabla..."可以用PGP签名标签；
+$ git tag -a v0.1 -m "version 0.1 released" 3628164
+> 创建带说明的标签，-a指定标签名v0.1,-m指定说明文字
 
-命令git tag可以查看所有标签。
+$ git tag -s <tagname> -m "blablabla..."
+> -s用私钥签名一个标签,签名采用PGP签名，因此，必须首先安装gpg（GnuPG），如果没有找到gpg，或者没有gpg密钥对，就会报错
+
+$ git show v0.1
+> 查看tag为v0.1的PGP签名信息；
+
+$ git tag
+> 查看所有标签。
+
+$ git tag -d v0.1
+> 删除标签v0.1。因为标签只存储在本地，不会自动推送到远程，所以打错的标签可以在本地安全删除。
+
+$ git push origin <tagname>
+> 标签<tagname>推送到远程
+
+$ git push origin --tags
+> 推送所有尚未同步的本地标签到远程
+
+$ git tag -d v0.1
+
+$ git push origin :refs/tags/v0.1
+> 如果v0.1标签已经推送到远程了，则先删除本地标签，然后删除一个远程标签。
+
+## 忽略特殊的文件
+在Git工作区的根目录下创建一个特殊的.gitignore文件，然后把要忽略的文件名填进去，Git就会自动忽略这些文件。
+
+不需要从头写.gitignore文件，GitHub已经为我们准备了各种配置文件，只需要组合一下就可以使用了。所有配置文件可以直接在线浏览：https://github.com/github/gitignore
