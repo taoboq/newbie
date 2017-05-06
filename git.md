@@ -239,3 +239,20 @@ $ git push origin :refs/tags/v0.1
 在Git工作区的根目录下创建一个特殊的.gitignore文件，然后把要忽略的文件名填进去，Git就会自动忽略这些文件。
 
 不需要从头写.gitignore文件，GitHub已经为我们准备了各种配置文件，只需要组合一下就可以使用了。所有配置文件可以直接在线浏览：https://github.com/github/gitignore
+
+使用Windows的童鞋注意了，如果你在资源管理器里新建一个.gitignore文件，它会非常弱智地提示你必须输入文件名，但是在文本编辑器里“保存”或者“另存为”就可以把文件保存为.gitignore了
+
+.gitignore文件本身要放到版本库里，并且可以对.gitignore做版本管理！
+
+## 配置别名
+$ git config --global alias.st status
+> 用st代替status命令
+
+每个仓库的Git配置文件都放在.git/config文件中
+
+## 搭建Git服务器
+
+## source
+1. [廖雪峰Git教程 ](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+
+1. [git官网](https://git-scm.com/ )
